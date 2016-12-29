@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using FavMeal.Model;
-using FavMeal.Web.Models;
+using FavMeal.ViewModel;
+using FavMealService;
 
 namespace FavMeal.Web.Controllers
 {
@@ -51,14 +48,14 @@ namespace FavMeal.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Body,FoodId,FoodCategoryId,RestaurantId,Uploader")] Review review)
+        public ActionResult Create(CreateReview review)
         {
-            if (ModelState.IsValid)
-            {
-                db.Reviews.Add(review);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    db.Reviews.Add(review);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
 
             //GoogleSigned.AssignAllServices(new GoogleSigned("AIzaSyAH7Tv5mLe3Nvbtp3E4-LXWF70cR0g-53s"));
             //PlaceDetailsRequest request = new PlaceDetailsRequest { PlaceID = "ChIJswq9hku_VTcRc6XODL8kH3U" };
@@ -66,10 +63,10 @@ namespace FavMeal.Web.Controllers
 
             //Console.Write(placeDetailsResponse.Status);
 
-            ViewBag.FoodCategoryId = new SelectList(db.Categories, "Id", "Name", review.FoodCategoryId);
-            ViewBag.FoodId = new SelectList(db.Foods, "Id", "Name", review.FoodId);
-            ViewBag.RestaurantId = new SelectList(db.Restaurants, "Id", "Name", review.RestaurantId);
-            return View(review);
+            //ViewBag.FoodCategoryId = new SelectList(db.Categories, "Id", "Name", review.FoodCategoryId);
+            //ViewBag.FoodId = new SelectList(db.Foods, "Id", "Name", review.FoodId);
+            //ViewBag.RestaurantId = new SelectList(db.Restaurants, "Id", "Name", review.RestaurantId);
+            return View();
         }
 
         // GET: Reviews/Edit/5

@@ -7,50 +7,55 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-   
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:300, 400" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.4/css/bootstrap-slider.min.css" />
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.4/bootstrap-slider.min.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Reviews", "Index", "Reviews")</li>
-
-
+    <header>
+        <nav class="nav navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="~/images/logo.png">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Home<span class="sr-only">(current)</span></a></li>
+                        <li>@Html.ActionLink("Review","Index", "Reviews")</li>
+                    </ul>
                     @{
-                        if (User.IsInRole("User"))
-                        {
-                            <li>@Html.ActionLink("Category", "Index", "Categories")</li>
-                            <li>@Html.ActionLink("Foods", "Index", "Foods")</li>
-                        }
+                        Html.RenderPartial("_LoginPartial");
                     }
-                </ul>
-                @Html.Partial("_LoginPartial")
+                </div>
             </div>
-        </div>
-    </div>
+        </nav>
+    </header>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
-   
+
+<footer>
+    <hr/>
+    <p class="text-left">Simple Footer &copy; @DateTime.Now.Year</p>
+</footer>
+
 
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH7Tv5mLe3Nvbtp3E4-LXWF70cR0g-53s&libraries=places&callback=initAutocomplete" async defer></script>
+   
 
-    
+
 </body>
 </html>

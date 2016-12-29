@@ -1,28 +1,200 @@
-﻿body {
+﻿body{
+    font-size: 14px;
+    font-family: 'Roboto', 'Arial Narrow';
+    font-weight: 300;
     padding-top: 50px;
-    padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/* highlight results */
+.ui-autocomplete span.hl_results {
+    background-color: #ffff66;
 }
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+ 
+/*/* loading - the AJAX indicator */
+.ui-autocomplete-loading {
+    background: white url('../img/ui-anim_basic_16x16.gif') right center no-repeat;
+}*/
+ 
+/* scroll results */
+.ui-autocomplete {
+    max-height: 250px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding for vertical scrollbar */
+    padding-right: 5px;
+}
+ 
+.ui-autocomplete li {
+    font-size: 16px;
+}
+ 
+/* IE 6 doesn't support max-height
+* we use height instead, but this forces the menu to always be this tall
 */
-.dl-horizontal dt {
-    white-space: normal;
+* html .ui-autocomplete {
+    height: 250px;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Arima Madurai', cursive;
+
 }
 
-.pac-container {
-  z-index: 1042;
+img{
+    /* ReSharper disable once CssNotResolved */
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+
+.page-title{
+    font-size: 35px;
+    font-family: 'Arima Madurai', cursive;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding: 20px 0 30px 0;
+}
+
+.search-box{
+    background-image: url("../images/food.jpg");
+    color: white;
+    text-align: center;
+    padding: 225px 0;
+}
+
+.search-box h3 {
+    font-size: 40px;
+    font-family: 'Arima Madurai', cursive;
+    font-weight: 300;
+    text-transform: uppercase;
+    -ms-text-shadow: 3px 2px 5px black;
+    text-shadow: 3px 2px 5px black;
+}
+
+.search-box h4 {
+    font-size: 30px;
+    font-family: 'Roboto', 'Arial Narrow';
+    font-weight: 200;
+    text-transform: uppercase;
+    -ms-text-shadow: 3px 2px 5px black;
+    text-shadow: 3px 2px 5px black;
+}
+
+.search-form{
+    width: 40%;
+    margin: 0 auto;
+    padding: 30px 0 0 0;
+}
+
+
+.navbar-brand img{
+    margin: -15px 0 0 0;
+}
+
+.recent-reviews{
+    padding: 100px 0;
+}
+
+.recent-reviews h3{
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Arima Madurai', cursive;
+    font-weight: 300;
+    margin-bottom: 100px;
+}
+
+.review-item {
+    padding: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    border: 2px solid #e5bf00;
+    overflow: auto;
+}
+
+.review-item h4{
+    font-size: 15px;
+    font-family: 'Roboto', 'Arial Narrow';
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.item-price{
+    padding: 10px 20px;
+    background-color: #e5bf00 ;
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.review-item .location{
+    margin-bottom: 18px;
+    font-size: 15px;
+    font-family: 'Roboto', 'Arial Narrow';
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.rating-block{
+    margin: 30px 0 0 0;
+}
+
+.rating-block p{
+    color: #666666;
+    font-size: small;
+}
+
+.rating-block p:before{
+    content: '-';
+    margin: 0 10px 0 0;
+}
+
+.item {
+    height: 300px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Roboto', 'Arial Narrow';
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    border: 2px solid #e5bf00;
+}
+
+.item img {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    -ms-opacity: .2;
+    opacity: .2;
+    position: absolute;
+    top: 0;
+}
+
+.review-info{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 10px;
+}
+
+.review-info p span{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.item-bottom{
+    position: absolute;
+    width: 100%;
+}
+
+.item-bottom h4{
+
+    font-family: 'Roboto', 'Arial Narrow';
+    font-weight: 300;
 }

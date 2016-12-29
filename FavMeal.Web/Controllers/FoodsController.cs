@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using FavMeal.Model;
-using FavMeal.Web.Models;
+using FavMealService;
 
 namespace FavMeal.Web.Controllers
 {
     public class FoodsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
         // GET: Foods
         public ActionResult Index()
         {
@@ -35,6 +31,14 @@ namespace FavMeal.Web.Controllers
             }
             return View(food);
         }
+
+        public ActionResult Get(string term)
+        {
+            IQueryable<Food> list = db.Foods.Where(m => m.Name.Contains(term));
+            List<Food> foods = list.ToList();
+            return new JsonResult {ContentType = "application/json", Data = foods, JsonRequestBehavior = JsonRequestBehavior.AllowGet};
+        }
+
 
         // GET: Foods/Create
         public ActionResult Create()

@@ -3,97 +3,138 @@
 @{
     ViewBag.Title = "Create";
 }
+<div class="page-header">
+    <h3 class="page-title">Write a review</h3>
+</div>
+<div class="col-md-6">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-<h2>Create</h2>
+        <div class="form-horizontal">
+           
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(model => model.PlaceId, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    <input type="text" id="placeName" class="form-control" />
+                    @Html.EditorFor(model => model.PlaceId, new { htmlAttributes = new { @class = "form-control", type = "hidden" } })
+                    @Html.ValidationMessageFor(model => model.PlaceId, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    <div class="form-horizontal">
-        <h4>CreateReview</h4>
-        <hr/>
-        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-        <div class="form-group">
-            @Html.LabelFor(model => model.Body, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Body, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.Body, "", new {@class = "text-danger"})
+            <div class="form-group">
+                @Html.LabelFor(model => model.FoodCategory, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.FoodCategory, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FoodCategory, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FoodName, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.FoodName, new { htmlAttributes = new { @class = "form-control", list = "foodnamedl", placeholder="Name of the food you enjoyed" } })
+                    <datalist id="foodnamedl"></datalist>
+                    @Html.ValidationMessageFor(model => model.FoodName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", placeholder="What is the cost" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-4">Ratings *</label>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label">Food</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="ex19" type="text"
+                                   data-provide="slider"
+                                   data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                                   data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                                   data-slider-min="1"
+                                   data-slider-max="10"
+                                   data-slider-step="1"
+                                   data-slider-value="5"
+                                   data-slider-tooltip="hide" name="FoodRating" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label">Price</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="ex19" type="text"
+                                   data-provide="slider"
+                                   data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                                   data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                                   data-slider-min="1"
+                                   data-slider-max="10"
+                                   data-slider-step="1"
+                                   data-slider-value="5"
+                                   data-slider-tooltip="hide" name="PriceRating" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label">Environment</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="ex19" type="text"
+                                   data-provide="slider"
+                                   data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                                   data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                                   data-slider-min="1"
+                                   data-slider-max="10"
+                                   data-slider-step="1"
+                                   data-slider-value="5"
+                                   data-slider-tooltip="hide" name="Environment" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label">Overall</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="ex19" type="text"
+                                   data-provide="slider"
+                                   data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                                   data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                                   data-slider-min="1"
+                                   data-slider-max="10"
+                                   data-slider-step="1"
+                                   data-slider-value="5"
+                                   data-slider-tooltip="hide" name="RestaurantRating" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Body, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    <textarea name="Budy" id="Body" rows="5" placeholder="Write some details (Optional)" class="form-control"></textarea>
+                    @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PlaceId, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PlaceId, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.PlaceId, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FoodCategory, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FoodCategory, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.FoodCategory, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FoodName, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FoodName, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.FoodName, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Price, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Price, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.Price, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FoodRating, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FoodRating, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.FoodRating, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PriceRating, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PriceRating, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.PriceRating, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Environment, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Environment, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.Environment, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RestaurantRating, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RestaurantRating, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.RestaurantRating, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default"/>
-            </div>
-        </div>
-    </div>
-}
+    }
+</div>
 
 <div>
     @Html.ActionLink("Back to List", "Index")
@@ -101,4 +142,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH7Tv5mLe3Nvbtp3E4-LXWF70cR0g-53s&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="~/Scripts/app.js"></script>
 }

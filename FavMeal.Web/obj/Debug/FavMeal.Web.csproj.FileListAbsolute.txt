@@ -82,12 +82,9 @@ D:\Programing\Programs\FavMeal\FavMeal.Web\bin\Microsoft.Owin.Security.Twitter.x
 D:\Programing\Programs\FavMeal\FavMeal.Web\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Programing\Programs\FavMeal\FavMeal.Web\obj\Debug\FavMeal.Web.dll
 D:\Programing\Programs\FavMeal\FavMeal.Web\obj\Debug\FavMeal.Web.pdb
-D:\Programing\Programs\FavMeal\FavMeal.Web\obj\Debug\FavMeal.Web.Migrations.InitialMigration.resources
-D:\Programing\Programs\FavMeal\FavMeal.Web\obj\Debug\FavMeal.Web.csproj.GenerateResource.Cache
-D:\Programing\Programs\FavMeal\FavMeal.Web\obj\Debug\FavMeal.Web.Migrations.CommentBy.resources
 D:\Programing\Programs\FavMeal\FavMeal.Web\bin\Imgur.API.dll
 D:\Programing\Programs\FavMeal\FavMeal.Web\bin\Imgur.API.xml
 D:\Programing\Programs\FavMeal\FavMeal.Web\bin\FavMeal.ViewModel.dll
 D:\Programing\Programs\FavMeal\FavMeal.Web\bin\FavMeal.ViewModel.pdb
-D:\Programing\Programs\FavMeal\FavMeal.Web\obj\Debug\FavMeal.Web.Migrations.AddLocation.resources
-D:\Programing\Programs\FavMeal\FavMeal.Web\obj\Debug\FavMeal.Web.Migrations.AddLocation1.resources
+D:\Programing\Programs\FavMeal\FavMeal.Web\bin\FavMealService.dll
+D:\Programing\Programs\FavMeal\FavMeal.Web\bin\FavMealService.pdb

@@ -209,25 +209,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612160522023_InitialMigration.cs" />
-    <Compile Include="Migrations\201612160522023_InitialMigration.Designer.cs">
-      <DependentUpon>201612160522023_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612170640550_CommentBy.cs" />
-    <Compile Include="Migrations\201612170640550_CommentBy.Designer.cs">
-      <DependentUpon>201612170640550_CommentBy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612290810302_AddLocation.cs" />
-    <Compile Include="Migrations\201612290810302_AddLocation.Designer.cs">
-      <DependentUpon>201612290810302_AddLocation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612290811475_AddLocation1.cs" />
-    <Compile Include="Migrations\201612290811475_AddLocation1.Designer.cs">
-      <DependentUpon>201612290811475_AddLocation1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -235,17 +217,97 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fonts.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\food.jpg" />
+    <Content Include="images\item1.jpg" />
+    <Content Include="images\item2.jpg" />
+    <Content Include="images\logo.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\Roboto_slab\robotoslab-bold-webfont.eot" />
+    <Content Include="fonts\Roboto_slab\robotoslab-bold-webfont.ttf" />
+    <Content Include="fonts\Roboto_slab\robotoslab-bold-webfont.woff" />
+    <Content Include="fonts\Roboto_slab\robotoslab-light-webfont.eot" />
+    <Content Include="fonts\Roboto_slab\robotoslab-light-webfont.ttf" />
+    <Content Include="fonts\Roboto_slab\robotoslab-light-webfont.woff" />
+    <Content Include="fonts\Roboto_slab\robotoslab-regular-webfont.eot" />
+    <Content Include="fonts\Roboto_slab\robotoslab-regular-webfont.ttf" />
+    <Content Include="fonts\Roboto_slab\robotoslab-regular-webfont.woff" />
+    <Content Include="fonts\Roboto_slab\robotoslab-thin-webfont.eot" />
+    <Content Include="fonts\Roboto_slab\robotoslab-thin-webfont.ttf" />
+    <Content Include="fonts\Roboto_slab\robotoslab-thin-webfont.woff" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-bold-webfont.eot" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-bold-webfont.ttf" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-bold-webfont.woff" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-bolditalic-webfont.eot" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-bolditalic-webfont.ttf" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-bolditalic-webfont.woff" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-italic-webfont.eot" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-italic-webfont.ttf" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-italic-webfont.woff" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-light-webfont.eot" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-light-webfont.ttf" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-light-webfont.woff" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-lightitalic-webfont.eot" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-lightitalic-webfont.ttf" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-lightitalic-webfont.woff" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-regular-webfont.eot" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-regular-webfont.ttf" />
+    <Content Include="fonts\Roboto_condensed\robotocondensed-regular-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-black-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-black-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-black-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-blackitalic-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-blackitalic-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-blackitalic-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-bold-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-bold-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-bold-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-bolditalic-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-bolditalic-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-bolditalic-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-italic-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-italic-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-italic-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-light-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-light-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-light-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-lightitalic-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-lightitalic-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-lightitalic-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-medium-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-medium-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-medium-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-mediumitalic-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-mediumitalic-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-mediumitalic-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-regular-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-regular-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-regular-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-thin-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-thin-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-thin-webfont.woff" />
+    <Content Include="fonts\Roboto\roboto-thinitalic-webfont.eot" />
+    <Content Include="fonts\Roboto\roboto-thinitalic-webfont.ttf" />
+    <Content Include="fonts\Roboto\roboto-thinitalic-webfont.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -328,20 +390,10 @@
       <Project>{6687cae3-f5cf-494c-b036-3ba7c62720c8}</Project>
       <Name>FavMeal.ViewModel</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612160522023_InitialMigration.resx">
-      <DependentUpon>201612160522023_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612170640550_CommentBy.resx">
-      <DependentUpon>201612170640550_CommentBy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612290810302_AddLocation.resx">
-      <DependentUpon>201612290810302_AddLocation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612290811475_AddLocation1.resx">
-      <DependentUpon>201612290811475_AddLocation1.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\FavMealService\FavMealService.csproj">
+      <Project>{7908E1E9-91A6-43CE-87E2-AD6A49A7DE4F}</Project>
+      <Name>FavMealService</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
