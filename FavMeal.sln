@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FavMeal.Model", "FavMeal.Model\FavMeal.Model.csproj", "{AF0F7CC2-4857-4AE8-9E4F-DBF1FBC69009}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FavMeal.Web", "FavMeal.Web\FavMeal.Web.csproj", "{DACB58C0-324B-434E-987A-E7CDDE4FE5D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FavMeal.ViewModel", "FavMeal.ViewModel\FavMeal.ViewModel.csproj", "{6687CAE3-F5CF-494C-B036-3BA7C62720C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FavMealService", "FavMealService\FavMealService.csproj", "{7908E1E9-91A6-43CE-87E2-AD6A49A7DE4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF0F7CC2-4857-4AE8-9E4F-DBF1FBC69009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF0F7CC2-4857-4AE8-9E4F-DBF1FBC69009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF0F7CC2-4857-4AE8-9E4F-DBF1FBC69009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF0F7CC2-4857-4AE8-9E4F-DBF1FBC69009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DACB58C0-324B-434E-987A-E7CDDE4FE5D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DACB58C0-324B-434E-987A-E7CDDE4FE5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DACB58C0-324B-434E-987A-E7CDDE4FE5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DACB58C0-324B-434E-987A-E7CDDE4FE5D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6687CAE3-F5CF-494C-B036-3BA7C62720C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6687CAE3-F5CF-494C-B036-3BA7C62720C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6687CAE3-F5CF-494C-B036-3BA7C62720C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6687CAE3-F5CF-494C-B036-3BA7C62720C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7908E1E9-91A6-43CE-87E2-AD6A49A7DE4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7908E1E9-91A6-43CE-87E2-AD6A49A7DE4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7908E1E9-91A6-43CE-87E2-AD6A49A7DE4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7908E1E9-91A6-43CE-87E2-AD6A49A7DE4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

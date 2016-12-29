@@ -1,0 +1,5 @@
+D:\Programing\Programs\FavMeal\FavMealService\bin\Debug\FavMealService.dll
+D:\Programing\Programs\FavMeal\FavMealService\bin\Debug\FavMealService.pdb
+D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.csprojResolveAssemblyReference.cache
+D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.dll
+D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.pdb
