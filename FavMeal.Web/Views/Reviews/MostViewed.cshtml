@@ -1,0 +1,15 @@
+﻿@model IEnumerable<FavMeal.Model.Review>
+
+<h4>Top 10 Viewed</h4>
+<hr/>
+@foreach (var item in Model) {
+    <div class="row">
+        <div class="col-md-3">
+            <img class="img-responsive" src="@item.Photos.First().Url"/>
+        </div>
+        <div class="col-md-9">
+            <p><strong>@item.Food.Name</strong></p>
+            <p>@item.Restaurants.Name<br/>Food Rating : @item.FoodRating/10</p>
+        </div>
+    </div>
+}

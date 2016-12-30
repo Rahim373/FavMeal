@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,6 +7,11 @@ namespace FavMeal.Model
 {
     public class Review
     {
+        public Review()
+        {
+            UploadTime = DateTime.UtcNow;
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
@@ -27,6 +33,7 @@ namespace FavMeal.Model
 
         public virtual Food Food { get; set; }
 
+        public int View { get; set; }
 
 
         [ForeignKey("Category")]
@@ -45,5 +52,7 @@ namespace FavMeal.Model
         public virtual ApplicationUser ApplicationUsers { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public DateTime UploadTime { get; set; }
     }
 }

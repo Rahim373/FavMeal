@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace FavMealService
 {
     public class ReviewService
     {
-        ApplicationDbContext _context = new ApplicationDbContext();
+        readonly ApplicationDbContext _context = new ApplicationDbContext();
 
         public async Task SaveReview (CreateReview review, string userId)
         {
@@ -75,5 +76,12 @@ namespace FavMealService
             });
             _context.SaveChanges();
         }
+
+        public List<Review> MostViewed()
+        {
+            return _context.Reviews.OrderByDescending(x => x.View).Take(10).Include(x=> x.Photos).Include(x=> x.Restaurants).ToList();
+        }
+
+
     }
 }

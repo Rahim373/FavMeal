@@ -1,57 +1,82 @@
-﻿@model IEnumerable<FavMeal.Model.Review>
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<FavMeal.Model.Review>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="page-header">
+    <h1 class="page-title">
+        Reviews
+        <small>Given by our valueable customers</small>
+    </h1>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationUsers.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Food.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Restaurants.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Body)
-        </th>
-        <th></th>
-    </tr>
+<div class="clearfix"></div>
+<div class="reviews">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-sm-12">
+                <div class="my-item">
+                    <a href="/Reviews/Details/@item.Id">
+                        <div class="r pull-left">
+                            <img class="img-responsive" src="@item.Photos.First().Url">
+                        </div>
+                    </a>
+                    <div class="review-info pull-right">
+                        <a href="/Reviews/Details/@item.Id">
+                            <h3>@item.Food.Name</h3>
+                        </a>
+                        <p>
+                            <span class="badge"><i class="fa fa-beer"></i> @item.Category.Name</span>
+                        </p>
+                        <p>
+                            <span class="badge" title="@item.Restaurants.Address"><i class="fa fa-map-marker"></i> @item.Restaurants.Name</span>
+                        </p>
+                        <p>
+                            <span class="badge"><i class="fa fa-clock-o"></i> @item.UploadTime</span>
+                        </p>
+                        <blockquote>
+                            <footer>Review By <cite>@item.ApplicationUsers.Email</cite></footer>
+                        </blockquote>
+                        <div class="item-bottom row">
+                            <div class="col-md-4">
+                                <h4 class="text-center text-muted"><i class="fa fa-eye"></i> @item.View</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <h4 class="text-center text-muted"><i class="fa fa-comment"></i> @item.Comments.Count</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <h4 class="text-center text-muted"><i class="fa fa-star"></i> @item.RestaurantRating/10</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUsers.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Food.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Restaurants.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Body)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+                                    }
+    </div>
+    <nav aria-label="Page navigation" class="text-center">
+        @*<ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>*@
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </nav>
+</div>

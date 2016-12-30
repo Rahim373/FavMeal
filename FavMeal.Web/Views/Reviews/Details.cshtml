@@ -1,58 +1,245 @@
-﻿@model FavMeal.Model.Review
+﻿@using FavMeal.Model
+@model FavMeal.Model.Review
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="row">
+    <div class="page-header">
+        <h1 class="page-title">@Model.Food.Name</h1>
+        <p class="lead">
+            by <a href="#">@Model.ApplicationUsers.UserName</a>
+        </p>
+        <p><span class="glyphicon glyphicon-time"></span> Posted on @Model.UploadTime</p>
+    </div>
+    <div class="col-lg-8">
 
-<div>
-    <h4>Review</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUsers.Email)
-        </dt>
+        <div class="row">
+            <div class="col-xs-12" id="slider">
+                <div class="row">
+                    <div class="col-sm-12" id="carousel-bounding-box">
+                        <div class="carousel slide" id="myCarousel">
+                            <!-- Carousel items -->
+                            <div class="carousel-inner">
+                                @{int i = 0;
+                                    string current = "";}
+                                @foreach (Photo photo in @Model.Photos)
+                                {
+                                    current = i == 0 ? "active" : "";
+                                    <div class="item @current" data-slide-number="0">
+                                        <img src="@photo.Url">
+                                    </div>
+                                    i++;
+                                }
+                            </div><!-- Carousel nav -->
+                            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/Slider-->
 
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUsers.Email)
-        </dd>
+        <div class="row hidden-xs" id="slider-thumbs">
+            <!-- Bottom switcher of slider -->
+            <ul class="hide-bullets">
+                @foreach (Photo photo in @Model.Photos)
+                {
+                    <li class="col-sm-2">
+                        <a class="thumbnail" id="carousel-selector-0"><img src="@photo.Url"></a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div>
+            <p class="lead">@Model.Body</p>
+            <hr>
+            <h3>Rating</h3>
+            <table class="table table-responsive table-condensed">
+                <tr>
+                    <td><strong>Food</strong></td>
+                    <td>
+                        <input class="disabledInput" type="text"
+                               data-provide="slider"
+                               data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                               data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                               data-slider-min="1"
+                               data-slider-max="10"
+                               data-slider-step="1"
+                               data-slider-value="@Model.FoodRating"
+                               data-slider-tooltip="hide" name="FoodRating" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Price</strong></td>
+                    <td>
+                        <input class="disabledInput" type="text"
+                               data-provide="slider"
+                               data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                               data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                               data-slider-min="1"
+                               data-slider-max="10"
+                               data-slider-step="1"
+                               data-slider-value="@Model.PriceRating"
+                               data-slider-tooltip="hide" name="PriceRating" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Environment</strong></td>
+                    <td>
+                        <input class="disabledInput" type="text"
+                               data-provide="slider"
+                               data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                               data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                               data-slider-min="1"
+                               data-slider-max="10"
+                               data-slider-step="1"
+                               data-slider-value="@Model.EnvironmentRating"
+                               data-slider-tooltip="hide" name="FoodRating" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Retaurant</strong></td>
+                    <td>
+                        <input class="disabledInput" type="text"
+                               data-provide="slider"
+                               data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                               data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                               data-slider-min="1"
+                               data-slider-max="10"
+                               data-slider-step="1"
+                               data-slider-value="@Model.RestaurantRating"
+                               data-slider-tooltip="hide" name="FoodRating" />
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </dt>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="well">
+                <h4>Leave a Comment</h4>
+                <form role="form" id="comment">
+                    <div class="form-group">
+                        <textarea id="commentfield" class="form-control" rows="3" placeholder="Write your opinion"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd>
+        <hr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Food.Name)
-        </dt>
+        @foreach (var item in Model.Comments)
+        {
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" height="61" width="61" src="~/images/user.png" alt="">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        @item.ApplicationUser.Email
+                        <small>@item.DateTime</small>
+                    </h4>
+                    @item.Body
+                </div>
+            </div>
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.Food.Name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Restaurants.Name)
-        </dt>
+    </div>
+    <div class="col-md-4">
 
-        <dd>
-            @Html.DisplayFor(model => model.Restaurants.Name)
-        </dd>
+        <!-- Blog Search Well -->
+        <div class="well">
+            <h4>Restaurant Location</h4>
+            <div id="map">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
+            </div>
+            <!-- /.input-group -->
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Body)
-        </dd>
+        <!-- Blog Categories Well -->
+        <div class="well">
+            @{
+                @Html.Action("MostViewed")
+            }
+        </div>
 
-    </dl>
+        <!-- Side Widget Well -->
+        <div class="well">
+            <h4>Side Widget Well</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+        </div>
+
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<script>
+    $(document)
+        .ready(function() {
+            $(".disabledInput").slider("disable");
+
+
+            $("#comment")
+                .submit(function() {
+                    var rId = @Html.Raw(Json.Encode(Model.Id));
+                    var body = $("#commentfield").val();
+
+
+                    if (body !== "") {
+                        var comment = {
+                            Body: body,
+                            ReviewId: rId
+                        };
+
+                        $.ajax({
+                            url: "/Comments/Save",
+                            data: comment,
+                            method: "POST"
+                        })
+                            .done(function() {
+                                ("#comment").val("");
+                            });
+                    }
+
+                });
+        });
+
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11
+        });
+        var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
+        var placeId = @Html.Raw(Json.Encode(Model.RestaurantId));
+
+        geocoder.geocode({ 'placeId': placeId },
+            function(results, status) {
+                if (status === 'OK') {
+                    if (results[0]) {
+                        map.setZoom(16);
+                        map.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                        });
+                        infowindow.setContent(results[0].formatted_address);
+                        infowindow.open(map, marker);
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH7Tv5mLe3Nvbtp3E4-LXWF70cR0g-53s&callback=initMap">
+</script>

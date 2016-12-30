@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using FavMeal.Model;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -14,8 +15,15 @@ namespace FavMealService.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
-            AddRoles(context);
-            AddFoodCategories(context);
+            try
+            {
+                AddRoles(context);
+                AddFoodCategories(context);
+            }
+            catch (System.Exception exception)
+            {
+                Debug.Write(exception.Message + "\n" + exception.StackTrace);
+            }
         }
 
         private void AddFoodCategories(ApplicationDbContext context)

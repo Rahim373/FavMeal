@@ -90,3 +90,7 @@ D:\Programing\Programs\FavMeal\FavMeal.Web\bin\Google.Maps.pdb
 D:\Programing\Programs\FavMeal\FavMeal.Web\obj\Debug\FavMeal.Web.csprojResolveAssemblyReference.cache
 D:\Programing\Programs\FavMeal\FavMeal.Web\obj\Debug\FavMeal.Web.dll
 D:\Programing\Programs\FavMeal\FavMeal.Web\obj\Debug\FavMeal.Web.pdb
+D:\Programing\Programs\FavMeal\FavMeal.Web\bin\PagedList.dll
+D:\Programing\Programs\FavMeal\FavMeal.Web\bin\PagedList.Mvc.dll
+D:\Programing\Programs\FavMeal\FavMeal.Web\bin\PagedList.xml
+D:\Programing\Programs\FavMeal\FavMeal.Web\bin\PagedList.Mvc.xml

@@ -1,80 +1,78 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using FavMeal.Model;
 using FavMeal.ViewModel;
 using FavMealService;
-using Imgur.API.Authentication.Impl;
-using Imgur.API.Endpoints.Impl;
-using Imgur.API.Models;
 using Microsoft.AspNet.Identity;
+using PagedList;
 
 namespace FavMeal.Web.Controllers
 {
     public class ReviewsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
-        // GET: Reviews
-        public ActionResult Index()
+        readonly ReviewService _reviewService = new ReviewService();
+
+        public ActionResult Index(int? page)
         {
-            db.Configuration.ProxyCreationEnabled = false;
-            List<Review> reviews = db.Reviews.ToList();
+            IPagedList<Review> reviews = _db.Reviews.Include(x=> x.Restaurants).Include(x=> x.Photos).Include(x=> x.Category).Include(x=> x.Food).Include(x=> x.ApplicationUsers).ToList().ToPagedList(page?? 1, 10);
             return View(reviews);
         }
-
-        // GET: Reviews/Details/5
+        
         public ActionResult Details(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
+            Review review = _db.Reviews.Find(id);
             if (review == null)
             {
                 return HttpNotFound();
             }
+            review.View += 1;
+            _db.Entry(review).State = EntityState.Modified;
+            _db.SaveChanges();
             return View(review);
         }
+        
 
-        // GET: Reviews/Create
         [Authorize]
         public ActionResult Create()
         {
-            ViewBag.FoodCategory = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.FoodCategory = new SelectList(_db.Categories, "Id", "Name");
             return View();
         }
+        
 
-        // POST: Reviews/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(CreateReview review)
         {
             if (ModelState.IsValid)
             {
-                ReviewService reviewService = new ReviewService();
-                await reviewService.SaveReview(review, User.Identity.GetUserId());
+                await _reviewService.SaveReview(review, User.Identity.GetUserId());
               
                 
                 return RedirectToAction("Index");
             }
-
-            //GoogleSigned.AssignAllServices(new GoogleSigned("AIzaSyAH7Tv5mLe3Nvbtp3E4-LXWF70cR0g-53s"));
-            //PlaceDetailsRequest request = new PlaceDetailsRequest { PlaceID = "ChIJswq9hku_VTcRc6XODL8kH3U" };
-            //PlaceDetailsResponse placeDetailsResponse = new PlaceDetailsService().GetResponse(request);
-
-            ViewBag.FoodCategory = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.FoodCategory = new SelectList(_db.Categories, "Id", "Name");
             return View();
         }
+
+
+        public ActionResult MostViewed()
+        {
+            ViewBag.mostViewed5 = _reviewService.MostViewed();
+            return PartialView("MostViewed", _reviewService.MostViewed());
+        }
+
 
         // GET: Reviews/Edit/5
         public ActionResult Edit(long? id)
@@ -83,14 +81,14 @@ namespace FavMeal.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
+            Review review = _db.Reviews.Find(id);
             if (review == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FoodCategoryId = new SelectList(db.Categories, "Id", "Name", review.FoodCategoryId);
-            ViewBag.FoodId = new SelectList(db.Foods, "Id", "Name", review.FoodId);
-            ViewBag.RestaurantId = new SelectList(db.Restaurants, "Id", "Name", review.RestaurantId);
+            ViewBag.FoodCategoryId = new SelectList(_db.Categories, "Id", "Name", review.FoodCategoryId);
+            ViewBag.FoodId = new SelectList(_db.Foods, "Id", "Name", review.FoodId);
+            ViewBag.RestaurantId = new SelectList(_db.Restaurants, "Id", "Name", review.RestaurantId);
             return View(review);
         }
 
@@ -103,13 +101,13 @@ namespace FavMeal.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(review).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(review).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FoodCategoryId = new SelectList(db.Categories, "Id", "Name", review.FoodCategoryId);
-            ViewBag.FoodId = new SelectList(db.Foods, "Id", "Name", review.FoodId);
-            ViewBag.RestaurantId = new SelectList(db.Restaurants, "Id", "Name", review.RestaurantId);
+            ViewBag.FoodCategoryId = new SelectList(_db.Categories, "Id", "Name", review.FoodCategoryId);
+            ViewBag.FoodId = new SelectList(_db.Foods, "Id", "Name", review.FoodId);
+            ViewBag.RestaurantId = new SelectList(_db.Restaurants, "Id", "Name", review.RestaurantId);
             return View(review);
         }
 
@@ -120,7 +118,7 @@ namespace FavMeal.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
+            Review review = _db.Reviews.Find(id);
             if (review == null)
             {
                 return HttpNotFound();
@@ -133,9 +131,9 @@ namespace FavMeal.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Review review = db.Reviews.Find(id);
-            db.Reviews.Remove(review);
-            db.SaveChanges();
+            Review review = _db.Reviews.Find(id);
+            _db.Reviews.Remove(review);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -143,7 +141,7 @@ namespace FavMeal.Web.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

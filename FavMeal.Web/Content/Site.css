@@ -154,33 +154,38 @@ img{
     margin: 0 10px 0 0;
 }
 
-.item {
+.my-item {
     height: 300px;
     margin-bottom: 25px;
     overflow: hidden;
-    position: relative;
     font-family: 'Roboto', 'Arial Narrow';
     -ms-border-radius: 10px;
     border-radius: 10px;
     border: 2px solid #e5bf00;
+   
 }
 
-.item img {
+.r {
+    overflow: hidden;
     height: 100%;
-    width: 100%;
-    vertical-align: middle;
-    -ms-opacity: .2;
-    opacity: .2;
-    position: absolute;
-    top: 0;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.r img {
+       width: 100%;
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
 }
 
 .review-info{
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    padding: 10px;
+    padding: 15px;
+    width: 50%;
+    height: 100%;
 }
 
 .review-info p span{
@@ -188,13 +193,24 @@ img{
     font-weight: 400;
 }
 
-.item-bottom{
-    position: absolute;
-    width: 100%;
-}
-
 .item-bottom h4{
 
     font-family: 'Roboto', 'Arial Narrow';
     font-weight: 300;
 }
+
+.hide-bullets {
+    list-style:none;
+    margin-left: -40px;
+    margin-top:20px;
+}
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+#map {
+   width: 100%;
+   height: 400px;
+   background-color: grey;
+ }

@@ -71,10 +71,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="CommentService.cs" />
     <Compile Include="FoodService.cs" />
     <Compile Include="Migrations\201612300426369_ratingAddes.cs" />
     <Compile Include="Migrations\201612300426369_ratingAddes.Designer.cs">
       <DependentUpon>201612300426369_ratingAddes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612300950132_DateAddedToReview.cs" />
+    <Compile Include="Migrations\201612300950132_DateAddedToReview.Designer.cs">
+      <DependentUpon>201612300950132_DateAddedToReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612301640404_ViewAdded.cs" />
+    <Compile Include="Migrations\201612301640404_ViewAdded.Designer.cs">
+      <DependentUpon>201612301640404_ViewAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +107,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612300426369_ratingAddes.resx">
       <DependentUpon>201612300426369_ratingAddes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612300950132_DateAddedToReview.resx">
+      <DependentUpon>201612300950132_DateAddedToReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612301640404_ViewAdded.resx">
+      <DependentUpon>201612301640404_ViewAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
