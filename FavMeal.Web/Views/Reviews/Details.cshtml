@@ -219,17 +219,26 @@
         var infowindow = new google.maps.InfoWindow;
         var placeId = @Html.Raw(Json.Encode(Model.RestaurantId));
 
+
+
+
         geocoder.geocode({ 'placeId': placeId },
             function(results, status) {
                 if (status === 'OK') {
                     if (results[0]) {
+                        var contentString = '<div id="content">'+
+                         '<div id="bodyContent">'+
+                         '<p><b>'+ results[0].formatted_address+'</b>'+
+                         '</div>'+
+                         '</div>';
+
                         map.setZoom(16);
                         map.setCenter(results[0].geometry.location);
                         var marker = new google.maps.Marker({
                             map: map,
                             position: results[0].geometry.location
                         });
-                        infowindow.setContent(results[0].formatted_address);
+                        infowindow.setContent(contentString);
                         infowindow.open(map, marker);
                     } else {
                         window.alert('No results found');

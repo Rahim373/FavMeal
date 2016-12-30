@@ -11,4 +11,3 @@ D:\Programing\Programs\FavMeal\FavMeal.Model\bin\Debug\Microsoft.AspNet.Identity
 D:\Programing\Programs\FavMeal\FavMeal.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\Programing\Programs\FavMeal\FavMeal.Model\obj\Debug\FavMeal.Model.dll
 D:\Programing\Programs\FavMeal\FavMeal.Model\obj\Debug\FavMeal.Model.pdb
-D:\Programing\Programs\FavMeal\FavMeal.Model\obj\Debug\FavMeal.Model.csprojResolveAssemblyReference.cache

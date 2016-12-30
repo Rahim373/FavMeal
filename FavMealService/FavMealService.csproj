@@ -54,8 +54,8 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\gmaps-api-net.0.13.30\lib\net\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -85,10 +85,15 @@
     <Compile Include="Migrations\201612301640404_ViewAdded.Designer.cs">
       <DependentUpon>201612301640404_ViewAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612301900537_PriceAdded.cs" />
+    <Compile Include="Migrations\201612301900537_PriceAdded.Designer.cs">
+      <DependentUpon>201612301900537_PriceAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestaurantService.cs" />
     <Compile Include="ReviewService.cs" />
+    <Compile Include="SearchService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FavMeal.Model\FavMeal.Model.csproj">
@@ -113,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612301640404_ViewAdded.resx">
       <DependentUpon>201612301640404_ViewAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612301900537_PriceAdded.resx">
+      <DependentUpon>201612301900537_PriceAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

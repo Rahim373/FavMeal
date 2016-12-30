@@ -21,8 +21,9 @@ D:\Programing\Programs\FavMeal\FavMealService\bin\Debug\Microsoft.AspNet.Identit
 D:\Programing\Programs\FavMeal\FavMealService\bin\Debug\Newtonsoft.Json.xml
 D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.csprojResolveAssemblyReference.cache
 D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.Migrations.ratingAddes.resources
+D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.Migrations.DateAddedToReview.resources
+D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.Migrations.ViewAdded.resources
+D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.Migrations.PriceAdded.resources
 D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.csproj.GenerateResource.Cache
 D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.dll
 D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.pdb
-D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.Migrations.DateAddedToReview.resources
-D:\Programing\Programs\FavMeal\FavMealService\obj\Debug\FavMealService.Migrations.ViewAdded.resources

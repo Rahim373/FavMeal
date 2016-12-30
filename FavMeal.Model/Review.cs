@@ -54,5 +54,6 @@ namespace FavMeal.Model
         public virtual ICollection<Comment> Comments { get; set; }
 
         public DateTime UploadTime { get; set; }
+        public double Price { get; set; }
     }
 }

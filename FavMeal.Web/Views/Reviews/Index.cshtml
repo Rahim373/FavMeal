@@ -23,7 +23,7 @@
                 <div class="my-item">
                     <a href="/Reviews/Details/@item.Id">
                         <div class="r pull-left">
-                            <img class="img-responsive" src="@item.Photos.First().Url">
+                            <img class="img-responsive" src="@item.Photos.FirstOrDefault().Url">
                         </div>
                     </a>
                     <div class="review-info pull-right">
@@ -57,26 +57,9 @@
                 </div>
             </div>
 
-                                    }
+         }
     </div>
     <nav aria-label="Page navigation" class="text-center">
-        @*<ul class="pagination">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>*@
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page}))
     </nav>
 </div>

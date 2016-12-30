@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace FavMeal.Model
+﻿namespace FavMeal.Model
 {
     public class Location
     {

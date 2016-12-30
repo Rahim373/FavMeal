@@ -14,7 +14,6 @@ namespace FavMeal.Model
             JoiningDate = DateTime.UtcNow;
         }
         public DateTime JoiningDate { get; set; }
-        public virtual ICollection<Photo> Photos { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
 

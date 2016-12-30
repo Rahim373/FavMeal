@@ -1,0 +1,67 @@
+﻿@model IEnumerable<FavMeal.ViewModel.SearchFoodOnlyViewModel>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<div class="row">
+    <div class="page-header">
+        <h1 class="page-title">Search for '@ViewBag.Term'</h1>
+    </div>
+</div>
+
+
+<h2>OnlyFood</h2>
+
+@if (!Model.Any())
+{
+    <h1>Nothing found</h1>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RestaurantId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestaurantRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnvironmentRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecentPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestaurantId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestaurantRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnvironmentRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecentPrice)
+        </td>
+       
+    </tr>
+}
+
+</table>

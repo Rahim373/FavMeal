@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using FavMeal.Model;
@@ -44,12 +42,13 @@ namespace FavMealService
                             {
                                 Id = image.Id,
                                 UploadDateTime = DateTime.UtcNow,
-                                Url =image.Link
+                                Url =image.Link,
+
                             });
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     // ignored
                 }
@@ -72,7 +71,8 @@ namespace FavMealService
                 FoodRating = review.FoodRating,
                 EnvironmentRating = review.Environment,
                 PriceRating = review.PriceRating,
-                RestaurantRating = review.RestaurantRating
+                RestaurantRating = review.RestaurantRating,
+                Price = review.Price
             });
             _context.SaveChanges();
         }

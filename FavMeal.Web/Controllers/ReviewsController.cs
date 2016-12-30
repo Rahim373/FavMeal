@@ -20,8 +20,9 @@ namespace FavMeal.Web.Controllers
 
         public ActionResult Index(int? page)
         {
-            IPagedList<Review> reviews = _db.Reviews.Include(x=> x.Restaurants).Include(x=> x.Photos).Include(x=> x.Category).Include(x=> x.Food).Include(x=> x.ApplicationUsers).ToList().ToPagedList(page?? 1, 10);
-            return View(reviews);
+            List<Review> reviews = _db.Reviews.Include(x=> x.Restaurants).Include(x=> x.Photos).Include(x=> x.Category).Include(x=> x.Food).Include(x=> x.ApplicationUsers).ToList();
+            
+            return View(reviews.ToPagedList(page ?? 1, 10));
         }
         
         public ActionResult Details(long? id)
