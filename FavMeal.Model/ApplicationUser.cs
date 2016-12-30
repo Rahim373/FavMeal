@@ -9,6 +9,10 @@ namespace FavMeal.Model
 {
     public class ApplicationUser : IdentityUser
     {
+        public ApplicationUser()
+        {
+            JoiningDate = DateTime.UtcNow;
+        }
         public DateTime JoiningDate { get; set; }
         public virtual ICollection<Photo> Photos { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }

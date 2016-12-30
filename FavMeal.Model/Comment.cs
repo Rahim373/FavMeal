@@ -19,7 +19,7 @@ namespace FavMeal.Model
 
 
         [ForeignKey("Reviews")]
-        public long ReviewId { get; set; }
+        public int ReviewId { get; set; }
         public virtual Review Reviews { get; set; }
 
 

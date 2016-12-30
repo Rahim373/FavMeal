@@ -7,7 +7,7 @@
     <h3 class="page-title">Write a review</h3>
 </div>
 <div class="col-md-6">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "Reviews", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -28,7 +28,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.FoodCategory, new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.EditorFor(model => model.FoodCategory, new { htmlAttributes = new { @class = "form-control" } })
+                   @Html.DropDownList("FoodCategory", ViewBag.FoodCategory as List<SelectListItem>, "Select Food type", new {@class="form-control"})
                     @Html.ValidationMessageFor(model => model.FoodCategory, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -66,7 +66,7 @@
                                    data-slider-max="10"
                                    data-slider-step="1"
                                    data-slider-value="5"
-                                   data-slider-tooltip="hide" name="FoodRating" class="form-control" />
+                                   data-slider-tooltip="hide" name="FoodRating" class="form-control"/>
                         </div>
                     </div>
                     <div class="row">
@@ -82,7 +82,7 @@
                                    data-slider-max="10"
                                    data-slider-step="1"
                                    data-slider-value="5"
-                                   data-slider-tooltip="hide" name="PriceRating" class="form-control" />
+                                   data-slider-tooltip="hide" name="PriceRating" class="form-control"/>
                         </div>
                     </div>
                     <div class="row">
@@ -98,7 +98,7 @@
                                    data-slider-max="10"
                                    data-slider-step="1"
                                    data-slider-value="5"
-                                   data-slider-tooltip="hide" name="Environment" class="form-control" />
+                                   data-slider-tooltip="hide" name="Environment" class="form-control"/>
                         </div>
                     </div>
                     <div class="row">
@@ -114,15 +114,23 @@
                                    data-slider-max="10"
                                    data-slider-step="1"
                                    data-slider-value="5"
-                                   data-slider-tooltip="hide" name="RestaurantRating" class="form-control" />
+                                   data-slider-tooltip="hide" name="RestaurantRating" class="form-control"/>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Photos, new {@class = "control-label col-md-4"})
+                <div class="col-md-8">
+                   <input type="file" required multiple name="Photos" id="Photos" accept="image/*"/>
+                </div>
+            </div>
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Body, new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    <textarea name="Budy" id="Body" rows="5" placeholder="Write some details (Optional)" class="form-control"></textarea>
+                    <textarea name="Body" id="Body" rows="5" placeholder="Write some details (Optional)" class="form-control"></textarea>
                     @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
                 </div>
             </div>

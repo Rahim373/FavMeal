@@ -9,6 +9,5 @@ D:\Programing\Programs\FavMeal\FavMeal.Model\bin\Debug\EntityFramework.xml
 D:\Programing\Programs\FavMeal\FavMeal.Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\Programing\Programs\FavMeal\FavMeal.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\Programing\Programs\FavMeal\FavMeal.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\Programing\Programs\FavMeal\FavMeal.Model\obj\Debug\FavMeal.Model.csprojResolveAssemblyReference.cache
 D:\Programing\Programs\FavMeal\FavMeal.Model\obj\Debug\FavMeal.Model.dll
 D:\Programing\Programs\FavMeal\FavMeal.Model\obj\Debug\FavMeal.Model.pdb

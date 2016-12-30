@@ -7,10 +7,19 @@ namespace FavMeal.Model
     public class Review
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(500)]
         public string Body { get; set; }
+
+        [Required]
+        public int FoodRating { get; set; }
+        [Required]
+        public int PriceRating { get; set; }
+        [Required]
+        public int EnvironmentRating { get; set; }
+        [Required]
+        public int RestaurantRating { get; set; }
 
         [Required]
         [ForeignKey("Food")]
@@ -26,7 +35,7 @@ namespace FavMeal.Model
 
 
         [ForeignKey("Restaurants")]
-        public int RestaurantId { get; set; }
+        public string RestaurantId { get; set; }
         public virtual Restaurant Restaurants { get; set; }
 
         public virtual ICollection<Photo> Photos { get; set; }

@@ -11,7 +11,6 @@ var initAutocomplete = function () {
         function () {
             var place = autocomplete.getPlace();
             document.getElementById("PlaceId").value = place.place_id;
-            alert(place.name);
         });
 }
 

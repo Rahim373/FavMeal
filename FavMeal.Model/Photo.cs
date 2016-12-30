@@ -7,19 +7,24 @@ namespace FavMeal.Model
 {
     public class Photo
     {
-        [Required]
+        public Photo()
+        {
+            UploadDateTime = DateTime.UtcNow;
+        }
+
+        [Key]
         public string Id { get; set; }
 
         [Required]
-        public string Path { get; set; }
+        public string Url { get; set; }
 
-        [Required]
+        
         public DateTime UploadDateTime { get; set; }
 
-        public virtual ICollection<Review> Reviews { get; set; }
 
-        [ForeignKey("ApplicationUser")]
-        public string Uploader { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        [ForeignKey("Review")]
+        public int ReviewId { get; set; }
+
+        public virtual Review Review { get; set; }
     }
 }

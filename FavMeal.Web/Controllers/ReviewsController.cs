@@ -1,10 +1,19 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using FavMeal.Model;
 using FavMeal.ViewModel;
 using FavMealService;
+using Imgur.API.Authentication.Impl;
+using Imgur.API.Endpoints.Impl;
+using Imgur.API.Models;
+using Microsoft.AspNet.Identity;
 
 namespace FavMeal.Web.Controllers
 {
@@ -15,8 +24,9 @@ namespace FavMeal.Web.Controllers
         // GET: Reviews
         public ActionResult Index()
         {
-            var reviews = db.Reviews.Include(r => r.ApplicationUsers).Include(r => r.Category).Include(r => r.Food).Include(r => r.Restaurants);
-            return View(reviews.ToList());
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Review> reviews = db.Reviews.ToList();
+            return View(reviews);
         }
 
         // GET: Reviews/Details/5
@@ -38,8 +48,7 @@ namespace FavMeal.Web.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            ViewBag.FoodCategoryId = new SelectList(db.Categories, "Id", "Name");
-
+            ViewBag.FoodCategory = new SelectList(db.Categories, "Id", "Name");
             return View();
         }
 
@@ -48,24 +57,22 @@ namespace FavMeal.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateReview review)
+        public async Task<ActionResult> Create(CreateReview review)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    db.Reviews.Add(review);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
+            if (ModelState.IsValid)
+            {
+                ReviewService reviewService = new ReviewService();
+                await reviewService.SaveReview(review, User.Identity.GetUserId());
+              
+                
+                return RedirectToAction("Index");
+            }
 
             //GoogleSigned.AssignAllServices(new GoogleSigned("AIzaSyAH7Tv5mLe3Nvbtp3E4-LXWF70cR0g-53s"));
             //PlaceDetailsRequest request = new PlaceDetailsRequest { PlaceID = "ChIJswq9hku_VTcRc6XODL8kH3U" };
             //PlaceDetailsResponse placeDetailsResponse = new PlaceDetailsService().GetResponse(request);
 
-            //Console.Write(placeDetailsResponse.Status);
-
-            //ViewBag.FoodCategoryId = new SelectList(db.Categories, "Id", "Name", review.FoodCategoryId);
-            //ViewBag.FoodId = new SelectList(db.Foods, "Id", "Name", review.FoodId);
-            //ViewBag.RestaurantId = new SelectList(db.Restaurants, "Id", "Name", review.RestaurantId);
+            ViewBag.FoodCategory = new SelectList(db.Categories, "Id", "Name");
             return View();
         }
 

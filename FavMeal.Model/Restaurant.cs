@@ -6,13 +6,13 @@ namespace FavMeal.Model
 {
     public class Restaurant
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        [Key]
+        public string RestaurantId { get; set; }
 
         [Required]
         public string Name { get; set; }
 
-        public ICollection<Location> Locations { get; set; }
+        public string Address { get; set; }
 
         public virtual ICollection<Review> Review { get; set; }
     }

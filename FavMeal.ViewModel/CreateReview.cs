@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Web;
 
 namespace FavMeal.ViewModel
 {
@@ -32,6 +34,6 @@ namespace FavMeal.ViewModel
         public int RestaurantRating { get; set; }
 
         [DisplayName("Photos *")]
-        public string Images { get; set; }
+        public ICollection<HttpPostedFileBase> Photos { get; set; }
     }
 }
