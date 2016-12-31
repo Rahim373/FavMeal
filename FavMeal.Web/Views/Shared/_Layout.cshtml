@@ -3,6 +3,23 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @{
+        var c = ViewContext.RouteData.Values["controller"].ToString();
+        var a = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+
+        if (c.Equals("Reviews") && a.Equals("Details"))
+        {
+            <meta property="og:url" content="@ViewBag.Url" />
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content="@ViewBag.Name" />
+            <meta property="og:description" content="@ViewBag.Description" />
+            <meta property="og:image" content="@ViewBag.Image" />
+        }
+
+
+    }
+
+
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -16,6 +33,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.4/bootstrap-slider.min.js"></script>
 </head>
 <body>
+    @{
+        var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+        var action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+
+        if (controller.Equals("Reviews") && action.Equals("Details"))
+        {
+            <div id="fb-root"></div>
+            <script>
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=2197626103795286";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+        }
+
+
+    }
     <header>
         <nav class="nav navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -52,10 +88,11 @@
 
 
 
-<footer class="mainfooter">
-    <p>Made with <span><i class="fa fa-heart"></i></span> by <strong><a href="http://www.facebook.com/rahim.prmsf">Abdur Rahim</a></strong>
-    </p>
-</footer>
+    <footer class="mainfooter">
+        <p>
+            Made with <span><i class="fa fa-heart"></i></span> by <strong><a href="http://www.facebook.com/rahim.prmsf">Abdur Rahim</a></strong>
+        </p>
+    </footer>
 
 
     @Scripts.Render("~/bundles/bootstrap")

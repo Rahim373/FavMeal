@@ -3,6 +3,10 @@
 
 @{
     ViewBag.Title = "Details";
+    ViewBag.Name = Model.Food.Name;
+    ViewBag.Description = Model.Body;
+    ViewBag.Image = Model.Photos.FirstOrDefault() != null ? Model.Photos.First().Url : "https://unsplash.it/300?image=488";
+    ViewBag.Url = Request.Url?.AbsoluteUri;
 }
 
 <div class="row">
@@ -12,6 +16,7 @@
             by <a href="#">@Model.ApplicationUsers.UserName</a>
         </p>
         <p><span class="glyphicon glyphicon-time"></span> Posted on @Model.UploadTime</p>
+    
     </div>
     <div class="col-lg-8">
 
@@ -128,7 +133,7 @@
                 </tbody>
             </table>
         </div>
-
+        <div class="fb-share-button" data-href="http://gearsbd.com/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@(ViewBag.Url)&amp;src=sdkpreparse">Share</a></div>
         @if (User.Identity.IsAuthenticated)
         {
             <div class="well">
