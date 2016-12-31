@@ -5,7 +5,15 @@
 @foreach (var item in Model) {
     <div class="row">
         <div class="col-md-3">
-            <img class="img-responsive" src="@item.Photos.First().Url"/>
+            @if (item.Photos.FirstOrDefault() != null)
+            {
+                <img class="img-responsive" src="@item.Photos.First().Url"/>
+            }
+            else
+            {
+                <img class="img-responsive" src="https://unsplash.it/300?image=488" />
+            }
+
         </div>
         <div class="col-md-9">
             <p><strong>@item.Food.Name</strong></p>

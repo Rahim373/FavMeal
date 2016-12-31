@@ -15,51 +15,63 @@
 </div>
 
 <div class="clearfix"></div>
-<div class="reviews">
+<div class="">
     <div class="row">
-        @foreach (var item in Model)
+        @if (Model.Count() != 0 && Model!=null)
         {
-            <div class="col-md-6 col-sm-12">
-                <div class="my-item">
-                    <a href="/Reviews/Details/@item.Id">
-                        <div class="r pull-left">
-                            <img class="img-responsive" src="@item.Photos.FirstOrDefault().Url">
-                        </div>
-                    </a>
-                    <div class="review-info pull-right">
-                        <a href="/Reviews/Details/@item.Id">
-                            <h3>@item.Food.Name</h3>
+            foreach (var item in Model)
+            {
+                <div class="col-md-6 col-sm-12">
+                    <div class="my-item">
+                        <a href="~/Reviews/Details/@item.Id">
+                            <div class="r pull-left">
+                                @if (item.Photos.FirstOrDefault() != null)
+                                {
+                                    <img class="img-responsive" src="@item.Photos.First().Url">
+                                }
+                                else
+                                {
+                                    <img class="img-responsive" src="https://unsplash.it/300?image=488">
+                                }
+
+                            </div>
                         </a>
-                        <p>
-                            <span class="badge"><i class="fa fa-beer"></i> @item.Category.Name</span>
-                        </p>
-                        <p>
-                            <span class="badge" title="@item.Restaurants.Address"><i class="fa fa-map-marker"></i> @item.Restaurants.Name</span>
-                        </p>
-                        <p>
-                            <span class="badge"><i class="fa fa-clock-o"></i> @item.UploadTime</span>
-                        </p>
-                        <blockquote>
-                            <footer>Review By <cite>@item.ApplicationUsers.Email</cite></footer>
-                        </blockquote>
-                        <div class="item-bottom row">
-                            <div class="col-md-4">
-                                <h4 class="text-center text-muted"><i class="fa fa-eye"></i> @item.View</h4>
-                            </div>
-                            <div class="col-md-4">
-                                <h4 class="text-center text-muted"><i class="fa fa-comment"></i> @item.Comments.Count</h4>
-                            </div>
-                            <div class="col-md-4">
-                                <h4 class="text-center text-muted"><i class="fa fa-star"></i> @item.RestaurantRating/10</h4>
+                        <div class="review-info pull-right">
+                            @{ var a = item.Id; }
+                            <a href="~/Reviews/Details/@item.Id">
+                                <h3>@item.Food.Name</h3>
+                            </a>
+                            <p>
+                                <span class="badge"><i class="fa fa-beer"></i> @item.Category.Name</span>
+                            </p>
+                            <p>
+                                <span class="badge" title="@item.Restaurants.Address"><i class="fa fa-map-marker"></i> @item.Restaurants.Name</span>
+                            </p>
+                            <p>
+                                <span class="badge"><i class="fa fa-clock-o"></i> @item.UploadTime</span>
+                            </p>
+                            <blockquote>
+                                <footer>Review By <cite>@item.ApplicationUsers.Email</cite></footer>
+                            </blockquote>
+                            <div class="item-bottom row">
+                                <div class="col-md-4">
+                                    <h4 class="text-center text-muted"><i class="fa fa-eye"></i> @item.View</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4 class="text-center text-muted"><i class="fa fa-comment"></i> @item.Comments.Count</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4 class="text-center text-muted"><i class="fa fa-star"></i> @item.RestaurantRating/10</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
+        }
 
-         }
     </div>
     <nav aria-label="Page navigation" class="text-center">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page}))
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
     </nav>
 </div>
