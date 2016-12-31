@@ -2,3 +2,4 @@ D:\Programing\Programs\FavMeal\FavMeal.ViewModel\bin\Debug\FavMeal.ViewModel.dll
 D:\Programing\Programs\FavMeal\FavMeal.ViewModel\bin\Debug\FavMeal.ViewModel.pdb
 D:\Programing\Programs\FavMeal\FavMeal.ViewModel\obj\Debug\FavMeal.ViewModel.dll
 D:\Programing\Programs\FavMeal\FavMeal.ViewModel\obj\Debug\FavMeal.ViewModel.pdb
+D:\Programing\Programs\FavMeal\FavMeal.ViewModel\obj\Debug\FavMeal.ViewModel.csprojResolveAssemblyReference.cache

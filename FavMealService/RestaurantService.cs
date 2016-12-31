@@ -46,5 +46,10 @@ namespace FavMealService
         {
             return _context.Restaurants.Find(id);
         }
+
+        public Restaurant RestaurantDeatails(string id)
+        {
+            return _context.Restaurants.Find(id);
+        }
     }
 }

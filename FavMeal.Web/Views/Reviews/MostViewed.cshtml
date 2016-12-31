@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<FavMeal.Model.Review>
 
-<h4>Top 10 Viewed</h4>
+<h4 class="text-center">Top 10 Viewed</h4>
 <hr/>
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderByDescending(x=> x.View)) {
     <div class="row">
         <div class="col-md-3">
             @if (item.Photos.FirstOrDefault() != null)

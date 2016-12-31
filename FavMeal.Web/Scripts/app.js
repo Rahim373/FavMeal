@@ -17,7 +17,7 @@ var initAutocomplete = function () {
 
 $(document).ready(function () {
     $.ajax({
-        url: "/Foods/Get?term=",
+        url: "http://localhost/FavMeal/Foods/Get?term=",
         context: document.body,
         method : "GET",
         success: function(response) {

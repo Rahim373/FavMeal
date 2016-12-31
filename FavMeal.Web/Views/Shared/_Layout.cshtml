@@ -12,6 +12,7 @@
 
 
 
+    <script src="https://cdn.jsdelivr.net/mark.js/8.6.0/jquery.mark.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.4/bootstrap-slider.min.js"></script>
 </head>
 <body>
@@ -32,9 +33,11 @@
                 </div>
                 <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home","Index", "Home")</li>
-                        <li>@Html.ActionLink("Review","Index", "Reviews")</li>
-                        <li>@Html.ActionLink("Write a review","Create", "Reviews")</li>
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Review", "Index", "Reviews")</li>
+                        <li>@Html.ActionLink("Write a review", "Create", "Reviews")</li>
+                        <li>@Html.ActionLink("Search", "Index", "Search")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
                     </ul>
                     @{
                         Html.RenderPartial("_LoginPartial");
@@ -43,20 +46,19 @@
             </div>
         </nav>
     </header>
-    <div class="container body-content">
+    <div id="container" class="container">
         @RenderBody()
     </div>
 
-<footer>
-    <hr/>
-    <p class="text-left">Simple Footer &copy; @DateTime.Now.Year</p>
+
+
+<footer class="mainfooter">
+    <p>Made with <span><i class="fa fa-heart"></i></span> by <strong><a href="http://www.facebook.com/rahim.prmsf">Abdur Rahim</a></strong>
+    </p>
 </footer>
 
 
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-   
-
-
 </body>
 </html>

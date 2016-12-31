@@ -82,6 +82,14 @@ namespace FavMealService
             return _context.Reviews.OrderByDescending(x => x.View).Take(10).Include(x=> x.Photos).Include(x=> x.Restaurants).ToList();
         }
 
+        public List<Review> RecentReviewed(int count)
+        {
+            return _context.Reviews.OrderByDescending(x => x.UploadTime).Take(count).Include(x => x.Photos).Include(x => x.Restaurants).ToList();
+        }
 
+        public List<Review> GetUserReviews(string userId)
+        {
+            return _context.Reviews.Where(x => x.Uploader == userId).ToList();
+        }
     }
 }

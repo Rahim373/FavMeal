@@ -6,69 +6,87 @@
 
 <div class="row">
     <div class="page-header">
-        <h1 class="page-title">Search for '@ViewBag.Food' 
-        @{
-            if (ViewBag.Place.ToString() != "")
-            {
-               <small>in @ViewBag.Place</small>
-            }
-        }
+        <form class="form-inline" action="~/Search" method="post">
+            <div class="form-group">
+                <input type="text" name="food" class="form-control" value="@Request.Params["food"]" placeholder="Food name" autocomplete="false">
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="location" class="form-control" value="@Request.Params["location"]" placeholder="Location name" autocomplete="false">
+            </div>
+            
+            |
+
+            <label class="radio-inline">
+                <input type="radio" name="orderby" @("checked") value="desc"/> Descending
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="orderby" @(Request.Params["orderby"] == "asc" ? "checked" : "") value="asc"/> Ascending
+            </label>
+            
+            |
+            
+            <label class="radio-inline">
+                <input type="radio" name="sortby" @("checked") value="restaurant" /> Restaurant
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="sortby" @(Request.Params["sortby"] == "price" ? "checked" : "") value="price" /> Price
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="sortby" @(Request.Params["sortby"] == "environment" ? "checked" : "") value="environment" /> Environment
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="sortby" @(Request.Params["sortby"] == "food" ? "checked" : "") value="food" /> Food
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="sortby" @(Request.Params["sortby"] == "restaurantname" ? "checked" : "") value="restaurantname" /> Name
+            </label>
+            <button type="submit" class="btn btn-success">Search</button>
+        </form>
+        <h1 class="page-title">Search for '@ViewBag.Food' '@ViewBag.Place'
+            <small>| Total <strong>@Model.Count()</strong> results found..</small>
         </h1>
     </div>
-</div>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MatchedString)
-        </th> 
-        <th>
-            @Html.DisplayNameFor(model => model.RestaurantId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestaurantRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EnvironmentRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FoodRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PriceRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RecentPrice)
-        </th>
-        <th></th>
-    </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatchedString)
-            </td>
-            <td>
-                <a href="@item.RestaurantId">@Html.DisplayFor(modelItem => item.RestaurantName)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestaurantRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EnvironmentRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FoodRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriceRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecentPrice)
-            </td>
-
-        </tr>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="well">
+                <h4>@item.RestaurantName <small class="match">(Matched for '@item.MatchedString')</small></h4>
+                <p>Reviewd by @item.ReviewCount person</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">Food</div>
+                        <div class="col-md-6">@item.FoodRating/10</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">Price</div>
+                        <div class="col-md-6">@item.PriceRating/10</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">Environment</div>
+                        <div class="col-md-6">@item.EnvironmentRating/10</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">Retaurant</div>
+                        <div class="col-md-6">@item.RestaurantRating/10</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
+</div>
 
-</table>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        var food = @Html.Raw(Json.Encode(ViewBag.Food));
+        var loc = @Html.Raw(Json.Encode(ViewBag.Place));
+
+        var keyword = [food, loc];
+        $(".match").mark(keyword, {
+            "element": "span",
+            "className": "heighlite"
+        });
+    });
+</script>

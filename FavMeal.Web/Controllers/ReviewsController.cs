@@ -20,11 +20,11 @@ namespace FavMeal.Web.Controllers
 
         public ActionResult Index(int? page)
         {
-            IPagedList<Review> reviews = _db.Reviews.Include(x => x.Restaurants).Include(x => x.Photos).Include(x => x.Category).Include(x => x.Food).Include(x => x.ApplicationUsers).ToList().ToPagedList(page ?? 1, 10);
+            IPagedList<Review> reviews = _db.Reviews.Include(x => x.Restaurants).Include(x => x.Photos).Include(x => x.Category).Include(x => x.Food).Include(x => x.ApplicationUsers).OrderByDescending(x=> x.UploadTime).ToList().ToPagedList(page ?? 1, 10);
             return View(reviews);
         }
         
-        public ActionResult Details(long? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -69,9 +69,24 @@ namespace FavMeal.Web.Controllers
 
         public ActionResult MostViewed()
         {
-            ViewBag.mostViewed5 = _reviewService.MostViewed();
             return PartialView("MostViewed", _reviewService.MostViewed());
         }
+
+        public ActionResult GetUserReviews()
+        {
+            return PartialView("GetUserReviews", _reviewService.GetUserReviews(User.Identity.GetUserId()));
+        }
+
+
+        public ActionResult RecentReviewsHorizontal4()
+        {
+            return PartialView("_RecentReviewdHorizontal", _reviewService.RecentReviewed(4));
+        }
+
+        //public ActionResult TrentingFood()
+        //{
+        //    return PartialView("TrentingFood", _reviewService.TrendingRetsurant());
+        //}
 
 
         // GET: Reviews/Edit/5

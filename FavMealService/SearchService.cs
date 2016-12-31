@@ -41,7 +41,7 @@ namespace FavMealService
                 RestaurantId = p.Key.RestaurantId,
                 RecentPrice = p.OrderByDescending(c => c.UploadTime).First().Price,
                 ReviewCount = p.Count(),
-                MatchedString = p.FirstOrDefault()?.Food.Name
+                MatchedString = p.FirstOrDefault()?.Food.Name + " & " + p.FirstOrDefault()?.Restaurants.Address
             }).AsQueryable();
             return queryable.ToList();
         }
@@ -59,7 +59,7 @@ namespace FavMealService
                 RestaurantId = p.Key.RestaurantId,
                 RecentPrice = p.OrderByDescending(c => c.UploadTime).First().Price,
                 ReviewCount = p.Count(),
-                MatchedString = p.FirstOrDefault()?.Food.Name
+                MatchedString = p.FirstOrDefault()?.Restaurants.Address
             }).AsQueryable();
             return queryable.ToList();
         }

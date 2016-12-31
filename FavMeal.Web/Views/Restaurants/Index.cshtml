@@ -1,0 +1,120 @@
+﻿@using FavMeal.Model
+@model FavMeal.Model.Restaurant
+
+<div class="page-header">
+    <h3 class="page-title">@Model.Name</h3>
+    <p>@Model.Address</p>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <h3>Served Foods</h3>
+                    <hr />
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Food Rating</th>
+                                <th>Price Rating</th>
+                                <th># Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                IEnumerable<IGrouping<Food, Review>> enumerable = Model.Review.GroupBy(x => x.Food).AsEnumerable();
+                                foreach (IGrouping<Food, Review> reviews in enumerable)
+                                {
+                                    <tr>
+                                        <td>@reviews.Key.Name</td>
+                                        <td>@reviews.Key.Reviews.Average(x => x.FoodRating)/10</td>
+                                        <td>@reviews.Key.Reviews.Average(x => x.PriceRating)/10</td>
+                                        <td>@reviews.Count()</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="well">
+                    <h3>Users Rating - by @Model.Review.Count() Users</h3>
+                    <hr />
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Environment</td>
+                                <td>@Model.Review.Average(x => x.EnvironmentRating)/10</td>
+                            </tr>
+                            <tr>
+                                <td>Restaurant</td>
+                                <td>@Model.Review.Average(x => x.RestaurantRating)/10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="text-center col-md-4">
+        <div class="well">
+            <h3>Location On Map</h3>
+            <hr />
+            <div id="map"></div>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11
+        });
+        var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
+        var placeId = @Html.Raw(Json.Encode(Model.RestaurantId));
+
+
+
+
+        geocoder.geocode({ 'placeId': placeId },
+        function(results, status) {
+            if (status === 'OK') {
+                if (results[0]) {
+                    var contentString = '<div id="content">'+
+                                    '<div id="bodyContent">'+
+                                    '<p><b>'+ results[0].formatted_address+'</b>'+
+                                    '</div>'+
+                                    '</div>';
+
+                    map.setZoom(16);
+                    map.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                    infowindow.setContent(contentString);
+                    infowindow.open(map, marker);
+                } else {
+                    window.alert('No results found');
+                }
+            } else {
+                window.alert('Geocoder failed due to: ' + status);
+            }
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH7Tv5mLe3Nvbtp3E4-LXWF70cR0g-53s&callback=initMap"></script>

@@ -34,6 +34,7 @@ namespace FavMeal.Web.Controllers
 
         public ActionResult Get(string term)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             IQueryable<Food> list = db.Foods.Where(m => m.Name.Contains(term));
             List<Food> foods = list.ToList();
             return new JsonResult {ContentType = "application/json", Data = foods, JsonRequestBehavior = JsonRequestBehavior.AllowGet};

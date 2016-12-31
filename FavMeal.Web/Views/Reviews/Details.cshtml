@@ -56,67 +56,76 @@
                 }
             </ul>
         </div>
-        <div>
+        <div class="well">
             <p class="lead">@Model.Body</p>
             <hr>
-            <h3>Rating</h3>
+            <h3>Price: @Model.Price BDT</h3>
+            <hr/>
             <table class="table table-responsive table-condensed">
-                <tr>
-                    <td><strong>Food</strong></td>
-                    <td>
-                        <input class="disabledInput" type="text"
-                               data-provide="slider"
-                               data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-                               data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
-                               data-slider-min="1"
-                               data-slider-max="10"
-                               data-slider-step="1"
-                               data-slider-value="@Model.FoodRating"
-                               data-slider-tooltip="hide" name="FoodRating" />
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Price</strong></td>
-                    <td>
-                        <input class="disabledInput" type="text"
-                               data-provide="slider"
-                               data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-                               data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
-                               data-slider-min="1"
-                               data-slider-max="10"
-                               data-slider-step="1"
-                               data-slider-value="@Model.PriceRating"
-                               data-slider-tooltip="hide" name="PriceRating" />
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Environment</strong></td>
-                    <td>
-                        <input class="disabledInput" type="text"
-                               data-provide="slider"
-                               data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-                               data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
-                               data-slider-min="1"
-                               data-slider-max="10"
-                               data-slider-step="1"
-                               data-slider-value="@Model.EnvironmentRating"
-                               data-slider-tooltip="hide" name="FoodRating" />
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Retaurant</strong></td>
-                    <td>
-                        <input class="disabledInput" type="text"
-                               data-provide="slider"
-                               data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-                               data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
-                               data-slider-min="1"
-                               data-slider-max="10"
-                               data-slider-step="1"
-                               data-slider-value="@Model.RestaurantRating"
-                               data-slider-tooltip="hide" name="FoodRating" />
-                    </td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Food</strong></td>
+                        <td>
+                            <input class="disabledInput" type="text"
+                                   data-provide="slider"
+                                   data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                                   data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                                   data-slider-min="1"
+                                   data-slider-max="10"
+                                   data-slider-step="1"
+                                   data-slider-value="@Model.FoodRating"
+                                   data-slider-tooltip="hide" name="FoodRating" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Price</strong></td>
+                        <td>
+                            <input class="disabledInput" type="text"
+                                   data-provide="slider"
+                                   data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                                   data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                                   data-slider-min="1"
+                                   data-slider-max="10"
+                                   data-slider-step="1"
+                                   data-slider-value="@Model.PriceRating"
+                                   data-slider-tooltip="hide" name="PriceRating" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Environment</strong></td>
+                        <td>
+                            <input class="disabledInput" type="text"
+                                   data-provide="slider"
+                                   data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                                   data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                                   data-slider-min="1"
+                                   data-slider-max="10"
+                                   data-slider-step="1"
+                                   data-slider-value="@Model.EnvironmentRating"
+                                   data-slider-tooltip="hide" name="FoodRating" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Retaurant</strong></td>
+                        <td>
+                            <input class="disabledInput" type="text"
+                                   data-provide="slider"
+                                   data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                                   data-slider-ticks-labels='["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]'
+                                   data-slider-min="1"
+                                   data-slider-max="10"
+                                   data-slider-step="1"
+                                   data-slider-value="@Model.RestaurantRating"
+                                   data-slider-tooltip="hide" name="FoodRating" />
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
 
@@ -133,23 +142,25 @@
             </div>
         }
 
-        <hr>
-
-        @foreach (var item in Model.Comments)
-        {
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" height="61" width="61" src="~/images/user.png" alt="">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        @item.ApplicationUser.Email
-                        <small>@item.DateTime</small>
-                    </h4>
-                    @item.Body
+        <div class="well">
+            <h4>Comments by users</h4>
+            <hr/>
+            @foreach (var item in Model.Comments.OrderByDescending(x=> x.DateTime))
+            {
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" height="61" width="61" src="~/images/user.png" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            @item.ApplicationUser.Email
+                            <small>@item.DateTime</small>
+                        </h4>
+                        @item.Body
+                    </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
 
 
     </div>
@@ -169,12 +180,6 @@
             @{
                 @Html.Action("MostViewed")
             }
-        </div>
-
-        <!-- Side Widget Well -->
-        <div class="well">
-            <h4>Side Widget Well</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
         </div>
 
     </div>

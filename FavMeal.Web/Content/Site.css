@@ -41,6 +41,9 @@ h1, h2, h3, h4, h5, h6{
 
 }
 
+a {
+    color: #333;
+}
 img{
     /* ReSharper disable once CssNotResolved */
     user-drag: none;
@@ -113,7 +116,7 @@ img{
     -ms-border-radius: 10px;
     border-radius: 10px;
     border: 2px solid #e5bf00;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .review-item h4{
@@ -155,13 +158,11 @@ img{
 }
 
 .my-item {
-    height: 300px;
-    margin-bottom: 25px;
+    height: 250px;
+    margin-bottom: 100px;
     overflow: hidden;
     font-family: 'Roboto', 'Arial Narrow';
-    -ms-border-radius: 10px;
-    border-radius: 10px;
-    border: 2px solid #e5bf00;
+     box-shadow: 4px 3px 14px -9px #666666;
    
 }
 
@@ -174,8 +175,10 @@ img{
     align-items: center;
     overflow: hidden
 }
+
+
 .r img {
-       width: 100%;
+    width: 100%;
     display: block;
     min-width: 100%;
     min-height: 100%;
@@ -186,6 +189,7 @@ img{
     padding: 15px;
     width: 50%;
     height: 100%;
+    position: relative;
 }
 
 .review-info p span{
@@ -193,8 +197,14 @@ img{
     font-weight: 400;
 }
 
-.item-bottom h4{
+.item-bottom{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
 
+.item-bottom h4{
+    font-size: 16px;
     font-family: 'Roboto', 'Arial Narrow';
     font-weight: 300;
 }
@@ -214,3 +224,58 @@ img{
    height: 400px;
    background-color: grey;
  }
+
+.heighlite{
+    background: orange;
+    color: black;
+}
+
+.mainfooter {
+    background: cornsilk;
+    margin: 50px 0 0 0;
+}
+
+.mainfooter p {
+    padding: 20px;
+    text-align: center;
+}
+
+.mainfooter p span {
+    color: red;
+}
+
+.mainfooter a {
+    color: black;
+}
+
+.recent-reviews-horizontal {
+    overflow: hidden;
+    position: relative;
+    box-shadow: 4px 3px 14px -9px #666666;
+}
+
+.fix-box {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.fix-box img {
+    height: 100%;
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.info2 {
+    padding: 10px;
+    text-align: left;
+}
+
+.recent-reviews a {
+    color: black;
+}

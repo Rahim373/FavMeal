@@ -1,0 +1,19 @@
+﻿@model IEnumerable<FavMeal.Model.Review>
+
+<div class="well">
+    <h3 class="text-center">Your Reviews</h3>
+    @foreach (var item in Model)
+    {
+        <hr/>
+        <div class="row">
+            <div class="col-md-3">
+                <img class="img-responsive" src="@(item.Photos.FirstOrDefault()!= null? item.Photos.First().Url : "https://unsplash.it/300?image=488")"/>
+            </div>
+            <div class="col-md-9">
+                <a href="~/Reviews/Details/@item.Id"><h4>@item.Food.Name</h4></a>
+                <p>@item.Restaurants.Address</p>
+                <p>Price: @item.Price</p>
+            </div>
+        </div>
+    }
+</div>

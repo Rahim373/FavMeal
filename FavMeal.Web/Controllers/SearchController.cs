@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using FavMeal.ViewModel;
 using FavMealService;
 
 namespace FavMeal.Web.Controllers
@@ -6,26 +9,72 @@ namespace FavMeal.Web.Controllers
     public class SearchController : Controller
     {
         private readonly SearchService _service = new SearchService();
-        // GET: Search
-        public ActionResult Index(string food = "", string location = "")
+
+
+        public ActionResult Index(string food = "", string location = "",
+                                string sortby = "restaurant", string orderby = "desc")
         {
-            @ViewBag.Food = food;
-            @ViewBag.Place = location;
-            @ViewBag.Term = food;
+            ViewBag.Food = food;
+            ViewBag.Place = location;
+
+            int sortByFlag = 0;
+
+            if (sortby.Equals("restaurant")) sortByFlag = 1;
+            else if (sortby.Equals("price")) sortByFlag = 2;
+            else if (sortby.Equals("environment")) sortByFlag = 3;
+            else if (sortby.Equals("food")) sortByFlag = 4;
+            else if (sortby.Equals("restaurantname")) sortByFlag = 5;
+
+            List<SearchFoodOnlyViewModel> list = new List<SearchFoodOnlyViewModel>();
+
             if (food != "" && location != "")
             {
-                return View(_service.FoodAndLocation(food, location));
+                list = _service.FoodAndLocation(food, location);
             }
-            if (location != "")
+            else if (location != "")
             {
-                return View(_service.LocationOnly(location));
+                list = _service.LocationOnly(location);
             }
-            if (food != "")
+            else if (food != "")
             {
-                return View(_service.FoodOnly(food));
+                list = _service.FoodOnly(food);
             }
-           
-            return HttpNotFound("No search data");
+
+
+            if (orderby.Equals("asc"))
+            {
+                switch (sortByFlag)
+                {
+                    case 1:
+                        return View(list.OrderBy(x => x.RestaurantRating));
+                    case 2:
+                        return View(list.OrderBy(x => x.PriceRating));
+                    case 3:
+                        return View(list.OrderBy(x => x.EnvironmentRating));
+                    case 4:
+                        return View(list.OrderBy(x => x.FoodRating));
+                    case 5:
+                        return View(list.OrderBy(x => x.RestaurantName));
+                }
+            }
+            else
+            {
+                switch (sortByFlag)
+                {
+                    case 1:
+                        return View(list.OrderByDescending(x => x.RestaurantRating));
+                    case 2:
+                        return View(list.OrderByDescending(x => x.PriceRating));
+                    case 3:
+                        return View(list.OrderByDescending(x => x.EnvironmentRating));
+                    case 4:
+                        return View(list.OrderByDescending(x => x.FoodRating));
+                    case 5:
+                        return View(list.OrderByDescending(x => x.RestaurantName));
+                }
+            }
+
+            return View(list);
         }
     }
 }
