@@ -133,7 +133,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="fb-share-button" data-href="http://gearsbd.com/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@(ViewBag.Url)&amp;src=sdkpreparse">Share</a></div>
+        <div class="fb-share-button" data-href="@ViewBag.Url" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@(ViewBag.Url)&amp;src=sdkpreparse">Share</a></div>
         @if (User.Identity.IsAuthenticated)
         {
             <div class="well">
@@ -209,12 +209,13 @@
                         };
 
                         $.ajax({
-                            url: "/Comments/Save",
-                            data: comment,
-                            method: "POST"
+                            url: "http://localhost/FavMeal/Comments/Save",
+                            method: "POST",
+                            data: comment
                         })
-                            .done(function() {
+                            .done(function(response) {
                                 ("#comment").val("");
+                                console.log(response);
                             });
                     }
 

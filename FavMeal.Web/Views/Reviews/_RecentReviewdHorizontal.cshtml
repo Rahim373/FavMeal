@@ -1,25 +1,27 @@
 ﻿@model IEnumerable<FavMeal.Model.Review>
 
-<section class="recent-reviews">
-    <h3>Recent Reviews</h3>
-    <div class="row">
-       @foreach (var item in Model)
-       {
-           <a href="~/Reviews/Details/@item.Id">
-               <div class="col-md-3">
-                   <div class="recent-reviews-horizontal">
-                       <div class="fix-box">
-                           <img src="@(item.Photos.Count > 0 ? item.Photos.First().Url : "https://unsplash.it/300?image=488")" />
-                       </div>
-                       <div class="info2">
-                           <h4>@item.Food.Name</h4>
-                           <p><i class="fa fa-map-marker"></i> @item.Restaurants.Name</p>
+@if (Model.Any())
+{
+    <section class="recent-reviews">
+        <h3>Recent Reviews</h3>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <a href="~/Reviews/Details/@item.Id">
+                    <div class="col-md-3">
+                        <div class="recent-reviews-horizontal">
+                            <div class="fix-box">
+                                <img src="@(item.Photos.Count > 0 ? item.Photos.First().Url : "https://unsplash.it/300?image=488")" />
+                            </div>
+                            <div class="info2">
+                                <h4>@item.Food.Name</h4>
+                                <p><i class="fa fa-map-marker"></i> @item.Restaurants.Name</p>
 
-                       </div>
-                   </div>
-               </div>
-           </a>
-       }
-    </div>
-
-</section>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    </section>
+}
